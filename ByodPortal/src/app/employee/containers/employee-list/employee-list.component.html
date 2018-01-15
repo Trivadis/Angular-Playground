@@ -1,0 +1,12 @@
+<table>
+    <tr>
+        <td>Id</td>
+        <td>Firstname</td>
+        <td>Lastname</td>
+    </tr>
+    <tr *ngFor="let employee of employees$ | async">
+        <td>{{ employee.id }}</td>
+        <td>{{ employee.firstname }}</td>
+        <td>{{ employee.lastname }}</td>
+    </tr>
+</table>
