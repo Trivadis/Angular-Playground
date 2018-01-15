@@ -26,5 +26,5 @@ export const getEmployeeLoading = createSelector(
 
 export const getEmployeeLoaded = createSelector(
   getEmployeeState,
-  fromEmployees.getEmployeeLoading
+  fromEmployees.getEmployeeLoaded
 );
