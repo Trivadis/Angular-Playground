@@ -3,15 +3,20 @@
         <label>
             <h4>Firstname</h4>
             <input type="text" formControlName="firstname" class="form-input">
-            <div class="form-error" *ngIf="false">
-                <p>An Employee must have a firstname</p>
+
+            <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)" class="alert alert-danger">
+                <div *ngIf="firstname.errors?.required">
+                    Firstname is required.
+                </div>
             </div>
         </label>
         <label>
             <h4>Lastname</h4>
             <input type="text" formControlName="lastname" class="form-input">
-            <div class="form-error" *ngIf="false">
-                <p>An Employee must have a lastname</p>
+            <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="alert alert-danger">
+                <div *ngIf="lastname.errors?.required">
+                    Lastname is required.
+                </div>
             </div>
         </label>
         <div class="form-actions">

@@ -15,6 +15,7 @@ import { FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-employee-form',
   templateUrl: 'employee-form.component.html',
+  styleUrls: ['employee-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EmployeeFormComponent implements OnInit, OnChanges {
@@ -32,13 +33,20 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
 
   constructor(private fb: FormBuilder) {}
 
-  ngOnInit() {  }
+  ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (this.employee && this.employee.id) {
       this.isEdit = true;
       this.form.patchValue(this.employee);
     }
+  }
+
+  get firstname() {
+    return this.form.get('firstname');
+  }
+  get lastname() {
+    return this.form.get('lastname');
   }
 
   createEmployee() {
