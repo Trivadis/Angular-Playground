@@ -78,16 +78,19 @@ employeeRouter
 
       response.setHeader('Content-Type', 'application/json');
       response.send(JSON.stringify(employeeToUpdate));
-      response.sendStatus(200);
+      // response.sendStatus(200);
     }
   })
   .delete((request: express.Request, response: express.Response) => {
-    let e = <Employee>request.body;
+    let id = request.params.id;
 
-    const newList = employees.filter(x => x.id !== e.id);
+    const newList = employees.filter(x => x.id != id);
+
     if (employees.length > newList.length) {
       employees = newList;
-      response.sendStatus(200);
+
+      response.setHeader('Content-Type', 'application/json');
+      response.send(JSON.stringify(true));
     } else {
       response.sendStatus(404);
     }

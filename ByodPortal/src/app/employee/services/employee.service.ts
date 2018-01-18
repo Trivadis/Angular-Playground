@@ -30,7 +30,7 @@ export class EmployeeService {
           .pipe(catchError((error: any) => Observable.throw(error)));
       }
 
-      removeEmployee(payload: Employee): Observable<Employee> {
+      removeEmployee(payload: Employee): Observable<any> {
         return this.http
           .delete<any>(`${environment.apiBaseUrl}/employees/${payload.id}`)
           .pipe(catchError((error: any) => Observable.throw(error)));

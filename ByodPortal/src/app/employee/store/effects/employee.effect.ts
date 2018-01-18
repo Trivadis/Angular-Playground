@@ -61,7 +61,10 @@ console.log(error);
         .removeEmployee(employee)
         .pipe(
           map(() => new employeeActions.RemoveEmployeeSuccess(employee)),
-          catchError(error => of(new employeeActions.RemoveEmployeeFail(error)))
+          catchError(error => {
+            console.log(error);
+                        return of(new employeeActions.RemoveEmployeeFail(error));
+                      })
         );
     })
   );
