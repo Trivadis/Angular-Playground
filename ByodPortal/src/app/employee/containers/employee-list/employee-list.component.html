@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-md-2">Filter by:</div>
     <div class="col-md-4">
-        <input type="text" [(ngModel)]="listFilter" />
+        <input type="search" [(ngModel)]="listFilter" />
     </div>
 </div>
 <div class="row" *ngIf="listFilter">
@@ -23,7 +23,7 @@
         <th>Lastname</th>
         <th>&nbsp;</th>
     </tr>
-    <tr *ngFor="let employee of employees$ | async">
+    <tr *ngFor="let employee of employees$ | async | employeeFilter:listFilter">
         <td>{{ employee.id }}</td>
         <td>{{ employee.firstname }}</td>
         <td>{{ employee.lastname }}</td>

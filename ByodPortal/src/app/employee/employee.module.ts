@@ -15,21 +15,24 @@ import * as fromComponents from './components';
 import * as fromContainers from './containers';
 
 // guards
- import * as fromGuards from './guards';
+import * as fromGuards from './guards';
+
+// pipes
+import * as fromPipes from './pipes';
 
 // services
 import * as fromServices from './services';
 
 @NgModule({
-    imports: [
-        SharedModule,
-        EmployeeRoutingModule,
+  imports: [
+    SharedModule,
+    EmployeeRoutingModule,
 
-        StoreModule.forFeature('employees', reducers),
-        EffectsModule.forFeature(effects),
-    ],
-    exports: [],
-    declarations: [...fromContainers.containers, ...fromComponents.components],
-    providers: [...fromServices.services, ...fromGuards.guards],
+    StoreModule.forFeature('employees', reducers),
+    EffectsModule.forFeature(effects)
+  ],
+  exports: [],
+  declarations: [...fromContainers.containers, ...fromComponents.components, ...fromPipes.pipes],
+  providers: [...fromServices.services, ...fromGuards.guards]
 })
-export class EmployeeModule { }
+export class EmployeeModule {}
