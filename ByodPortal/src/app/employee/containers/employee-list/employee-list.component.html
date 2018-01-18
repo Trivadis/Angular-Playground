@@ -1,12 +1,21 @@
+<a class="btn btn-ok" routerLink="./new">
+    New Employee
+</a>
 <table>
     <tr>
-        <td>Id</td>
-        <td>Firstname</td>
-        <td>Lastname</td>
+        <th>Id</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>&nbsp;</th>
     </tr>
     <tr *ngFor="let employee of employees$ | async">
         <td>{{ employee.id }}</td>
         <td>{{ employee.firstname }}</td>
         <td>{{ employee.lastname }}</td>
+        <td>
+                <a class="btn btn-ok" [routerLink]="['./',  employee.id]">
+                    Edit
+                </a>
+        </td>
     </tr>
 </table>

@@ -1,0 +1,29 @@
+<div>
+    <form [formGroup]="form">
+        <label>
+            <h4>Firstname</h4>
+            <input type="text" formControlName="firstname" class="form-input">
+            <div class="form-error" *ngIf="false">
+                <p>An Employee must have a firstname</p>
+            </div>
+        </label>
+        <label>
+            <h4>Lastname</h4>
+            <input type="text" formControlName="lastname" class="form-input">
+            <div class="form-error" *ngIf="false">
+                <p>An Employee must have a lastname</p>
+            </div>
+        </label>
+        <div class="form-actions">
+            <button type="button" class="btn btn-ok" *ngIf="!isEdit" (click)="createEmployee()">
+                Create
+            </button>
+            <button type="button" class="btn btn-ok" *ngIf="isEdit" (click)="updateEmployee()">
+                Save
+            </button>
+            <button type="button" class="btn btn-warning" *ngIf="isEdit" (click)="removeEmployee()">
+                Delete
+            </button>
+        </div>
+    </form>
+</div>

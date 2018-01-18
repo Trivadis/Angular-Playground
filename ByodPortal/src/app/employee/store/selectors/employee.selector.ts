@@ -5,6 +5,7 @@ import * as fromRoot from '../../../../app/store';
 import * as fromFeature from '../reducers';
 import * as fromState from '../state';
 import * as fromEmployees from '../reducers/employee.reducer';
+import { Employee } from '../../models/employee.model';
 
 export const getEmployeeState = createSelector(
   fromFeature.getState,
@@ -27,4 +28,12 @@ export const getEmployeeLoading = createSelector(
 export const getEmployeeLoaded = createSelector(
   getEmployeeState,
   fromEmployees.getEmployeeLoaded
+);
+
+export const getSelectedEmployee = createSelector(
+getEmployeeEntities,
+fromRoot.getRouterState,
+  (entities, router): Employee => {
+    return router.state && entities[router.state.params.employeeId];
+  }
 );

@@ -20,9 +20,9 @@ export function reducer(
       const employees = action.payload;
 
       const entities = employees.reduce(
-        (entities: { [id: number]: Employee }, employee: Employee) => {
+        (e: { [id: number]: Employee }, employee: Employee) => {
           return {
-            ...entities,
+            ...e,
             [employee.id]: employee,
           };
         },
@@ -47,6 +47,32 @@ export function reducer(
       };
     }
 
+
+    case fromActions.ActionTypes.CreateEmployeeSuccess:
+    case fromActions.ActionTypes.UpdateEmployeeSuccess: {
+      const employee = action.payload;
+
+      const entities = {
+        ...state.entities,
+        [employee.id]: employee,
+      };
+
+      return {
+        ...state,
+        entities,
+      };
+    }
+
+
+    case fromActions.ActionTypes.RemoveEmployeeSuccess: {
+      const employee = action.payload;
+      const { [employee.id]: removed, ...entities } = state.entities;
+
+      return {
+        ...state,
+        entities,
+      };
+    }
   }
 
   return state;

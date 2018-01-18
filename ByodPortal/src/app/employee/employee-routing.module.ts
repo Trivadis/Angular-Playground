@@ -1,16 +1,25 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { EmployeeListComponent } from './containers/employee-list/employee-list.component';
-
+import * as fromContainer from './containers';
 import * as fromGuards from './guards';
 
 const routes: Routes = [
   {
     path: '',
-    component: EmployeeListComponent,
+    component: fromContainer.EmployeeListComponent,
     canActivate: [fromGuards.EmployeeGuard]
    },
+   {
+    path: 'new',
+    component: fromContainer.EmployeeComponent,
+    canActivate: [fromGuards.EmployeeGuard]
+  },
+   {
+     path: ':employeeId',
+     component: fromContainer.EmployeeComponent,
+     canActivate: [fromGuards.EmployeeGuard]
+   }
 ];
 
 @NgModule({

@@ -10,10 +10,7 @@ import * as fromServices from '../../services';
 
 @Injectable()
 export class EmployeeEffects {
-  constructor(
-    private actions$: Actions,
-    private employeeService: fromServices.EmployeeService
-  ) {}
+  constructor(private actions$: Actions, private employeeService: fromServices.EmployeeService) {}
 
   @Effect()
   loadEmployees$ = this.actions$.ofType(employeeActions.ActionTypes.LoadEmployees).pipe(
@@ -26,4 +23,61 @@ export class EmployeeEffects {
         );
     })
   );
+
+  @Effect()
+  createEmployee$ = this.actions$.ofType(employeeActions.ActionTypes.CreateEmployee).pipe(
+    map((action: employeeActions.CreateEmployee) => action.payload),
+    switchMap(employee => {
+      return this.employeeService
+        .createEmployee(employee)
+        .pipe(
+          map(newEmpl => new employeeActions.CreateEmployeeSuccess(newEmpl)),
+          catchError(error => of(new employeeActions.CreateEmployeeFail(error)))
+        );
+    })
+  );
+
+  @Effect()
+  updateEmployee$ = this.actions$.ofType(employeeActions.ActionTypes.UpdateEmployee).pipe(
+    map((action: employeeActions.UpdateEmployee) => action.payload),
+    switchMap(employee => {
+      return this.employeeService
+        .updateEmployee(employee)
+        .pipe(
+          map(newEmpl => new employeeActions.UpdateEmployeeSuccess(newEmpl)),
+          catchError(error => {
+console.log(error);
+            return of(new employeeActions.UpdateEmployeeFail(error));
+          })
+        );
+    })
+  );
+
+  @Effect()
+  removeEmployee$ = this.actions$.ofType(employeeActions.ActionTypes.RemoveEmployee).pipe(
+    map((action: employeeActions.RemoveEmployee) => action.payload),
+    switchMap(employee => {
+      return this.employeeService
+        .removeEmployee(employee)
+        .pipe(
+          map(() => new employeeActions.RemoveEmployeeSuccess(employee)),
+          catchError(error => of(new employeeActions.RemoveEmployeeFail(error)))
+        );
+    })
+  );
+
+  @Effect()
+  handleEmployeeSuccess$ = this.actions$
+    .ofType(
+      employeeActions.ActionTypes.CreateEmployeeSuccess,
+      employeeActions.ActionTypes.UpdateEmployeeSuccess,
+      employeeActions.ActionTypes.RemoveEmployeeSuccess
+    )
+    .pipe(
+      map(employee => {
+        return new fromRoot.Go({
+          path: ['/employees']
+        });
+      })
+    );
 }

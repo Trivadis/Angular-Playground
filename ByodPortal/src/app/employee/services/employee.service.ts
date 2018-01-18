@@ -15,24 +15,24 @@ export class EmployeeService {
     getEmployees(): Observable<Employee[]> {
         return this.http
           .get<Employee[]>(`${environment.apiBaseUrl}/employees`)
-          .pipe(catchError((error: any) => Observable.throw(error.json())));
+          .pipe(catchError((error: any) => Observable.throw(error)));
       }
 
       createEmployee(payload: Employee): Observable<Employee> {
         return this.http
           .post<Employee>(`${environment.apiBaseUrl}/employees`, payload)
-          .pipe(catchError((error: any) => Observable.throw(error.json())));
+          .pipe(catchError((error: any) => Observable.throw(error)));
       }
 
       updateEmployee(payload: Employee): Observable<Employee> {
         return this.http
           .put<Employee>(`${environment.apiBaseUrl}/employees/${payload.id}`, payload)
-          .pipe(catchError((error: any) => Observable.throw(error.json())));
+          .pipe(catchError((error: any) => Observable.throw(error)));
       }
 
       removeEmployee(payload: Employee): Observable<Employee> {
         return this.http
           .delete<any>(`${environment.apiBaseUrl}/employees/${payload.id}`)
-          .pipe(catchError((error: any) => Observable.throw(error.json())));
+          .pipe(catchError((error: any) => Observable.throw(error)));
       }
 }
