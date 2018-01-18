@@ -41,15 +41,13 @@ export class EmployeeEffects {
   updateEmployee$ = this.actions$.ofType(employeeActions.ActionTypes.UpdateEmployee).pipe(
     map((action: employeeActions.UpdateEmployee) => action.payload),
     switchMap(employee => {
-      return this.employeeService
-        .updateEmployee(employee)
-        .pipe(
-          map(newEmpl => new employeeActions.UpdateEmployeeSuccess(newEmpl)),
-          catchError(error => {
-console.log(error);
-            return of(new employeeActions.UpdateEmployeeFail(error));
-          })
-        );
+      return this.employeeService.updateEmployee(employee).pipe(
+        map(newEmpl => new employeeActions.UpdateEmployeeSuccess(newEmpl)),
+        catchError(error => {
+          console.log(error);
+          return of(new employeeActions.UpdateEmployeeFail(error));
+        })
+      );
     })
   );
 
@@ -57,15 +55,13 @@ console.log(error);
   removeEmployee$ = this.actions$.ofType(employeeActions.ActionTypes.RemoveEmployee).pipe(
     map((action: employeeActions.RemoveEmployee) => action.payload),
     switchMap(employee => {
-      return this.employeeService
-        .removeEmployee(employee)
-        .pipe(
-          map(() => new employeeActions.RemoveEmployeeSuccess(employee)),
-          catchError(error => {
-            console.log(error);
-                        return of(new employeeActions.RemoveEmployeeFail(error));
-                      })
-        );
+      return this.employeeService.removeEmployee(employee).pipe(
+        map(() => new employeeActions.RemoveEmployeeSuccess(employee)),
+        catchError(error => {
+          console.log(error);
+          return of(new employeeActions.RemoveEmployeeFail(error));
+        })
+      );
     })
   );
 
@@ -79,7 +75,8 @@ console.log(error);
     .pipe(
       map(employee => {
         return new fromRoot.Go({
-          path: ['/employees']
+          path: ['/employees'],
+          extras: { queryParamsHandling: 'preserve' }
         });
       })
     );

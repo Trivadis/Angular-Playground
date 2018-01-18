@@ -41,6 +41,15 @@ employeeRouter.route('/employees')
 .get((request: express.Request, response: express.Response) => {
   response.setHeader('Content-Type', 'application/json');
   response.send(JSON.stringify(employees));
+})
+.post((request: express.Request, response: express.Response) => {
+  let e = <Employee>request.body;
+
+  e.id = getNextEmployeeId();
+  employees.push(e);
+
+  response.setHeader('Content-Type', 'application/json');
+  response.send(JSON.stringify(e));
 });
 
 employeeRouter
@@ -55,15 +64,6 @@ employeeRouter
       response.setHeader('Content-Type', 'application/json');
       response.send(JSON.stringify(filteredEmployees[0]));
     }
-  })
-  .post((request: express.Request, response: express.Response) => {
-    let e = <Employee>request.body;
-
-    e.id = getNextEmployeeId();
-    employees.push(e);
-
-    response.setHeader('Content-Type', 'application/json');
-    response.send(JSON.stringify(e));
   })
   .put((request: express.Request, response: express.Response) => {
     let e = <Employee>request.body;
