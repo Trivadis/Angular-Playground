@@ -21,12 +21,14 @@
         <th>Id</th>
         <th>Firstname</th>
         <th>Lastname</th>
+        <th>E-Mail</th>
         <th>&nbsp;</th>
     </tr>
     <tr *ngFor="let employee of employees$ | async | employeeFilter:listFilter">
         <td>{{ employee.id }}</td>
         <td>{{ employee.firstname }}</td>
         <td>{{ employee.lastname }}</td>
+        <td>{{ employee.email }}</td>
         <td>
             <a class="btn btn-ok" [routerLink]="['./',  employee.id]" [queryParams]="{filterBy: listFilter}">
                 Edit

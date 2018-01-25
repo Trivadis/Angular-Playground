@@ -19,6 +19,34 @@
                 </div>
             </div>
         </label>
+        <label>
+            <h4>Email</h4>
+            <input type="text" formControlName="email" class="form-input">
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                <div *ngIf="email.errors?.required">
+                    E-Mail is required.
+                </div>
+                <div *ngIf="email.errors?.invalidemail">
+                    E-Mail is invalid.
+                </div>
+            </div>
+        </label>
+        <label>
+            <h4>Confirm Email</h4>
+            <input type="text" formControlName="emailConfirm" class="form-input">
+            <div *ngIf="emailConfirm.invalid && (emailConfirm.dirty || emailConfirm.touched)" class="alert alert-danger">
+                <div *ngIf="emailConfirm.errors?.required">
+                    E-Mail is required.
+                </div>
+                <div *ngIf="!emailConfirm.errors?.required && !email.errors?.invalidemail &&
+                form.errors?.nomatch">
+                    E-Mails must match
+                </div>
+                <div *ngIf="email.errors?.invalidemail">
+                    E-Mail is invalid.
+                </div>
+            </div>
+        </label>
         <div class="form-actions">
             <button type="button" class="btn btn-ok" *ngIf="!isEdit" (click)="createEmployee()">
                 Create

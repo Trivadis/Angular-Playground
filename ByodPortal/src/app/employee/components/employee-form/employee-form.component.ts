@@ -1,3 +1,4 @@
+import { EmployeeValidators } from './../../validators/employee.validator';
 import { Employee } from './../../models/employee.model';
 import {
   Component,
@@ -27,7 +28,12 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
 
   form: FormGroup = this.fb.group({
     firstname: ['', Validators.required],
-    lastname: ['', Validators.required]
+    lastname: ['', Validators.required],
+    email: ['', [Validators.required, EmployeeValidators.emailValidator], EmployeeValidators.checkEmailUnique],
+    emailConfirm: ['', [Validators.required, EmployeeValidators.emailValidator]]
+  }, {
+    validator: EmployeeValidators.checkEmailsMatch,
+    updateOn: 'submit'
   });
   isEdit = false;
 
@@ -47,6 +53,12 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
   }
   get lastname() {
     return this.form.get('lastname');
+  }
+  get email() {
+    return this.form.get('email');
+  }
+  get emailConfirm() {
+    return this.form.get('emailConfirm');
   }
 
   createEmployee() {

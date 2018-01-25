@@ -5,6 +5,7 @@ interface Employee {
   id: number;
   firstname: string;
   lastname: string;
+  email: string;
 }
 interface Product {
   id: number;
@@ -20,12 +21,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 let employees: Employee[] = [
-  { id: 1, firstname: 'Max', lastname: 'Payne' },
-  { id: 2, firstname: 'Lara', lastname: 'Croft' },
-  { id: 3, firstname: 'Thomas', lastname: 'Huber' },
-  { id: 4, firstname: 'Duke', lastname: 'Nukem' },
-  { id: 5, firstname: 'Thomas', lastname: 'Gassmann' },
-  { id: 6, firstname: 'Thomas', lastname: 'Bandixen' }
+  { id: 1, firstname: 'Max', lastname: 'Payne', email: 'max.payne@trivadis.com' },
+  { id: 2, firstname: 'Lara', lastname: 'Croft', email: 'lara.croft@trivadis.com' },
+  { id: 3, firstname: 'Thomas', lastname: 'Huber', email: 'thomas.huber@trivadis.com' },
+  { id: 4, firstname: 'Duke', lastname: 'Nukem', email: 'duke.nukem@trivadis.com' },
+  { id: 5, firstname: 'Thomas', lastname: 'Gassmann', email: 'thomas.gassmann@trivadis.com' },
+  { id: 6, firstname: 'Thomas', lastname: 'Bandixen', email: 'thomas.bandixen@trivadis.com' }
 ];
 
 //CORS middleware
