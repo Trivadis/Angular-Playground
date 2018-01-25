@@ -1,1 +1,60 @@
-/* You can add global styles to this file, and also import other style files */
+header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: rgba(55, 61, 73, 0.975);
+    color: #fff;
+    box-shadow: none;
+    height: 3.75em;
+    transition: top 0.25s ease-in-out;
+    font-size: 0.9em;
+    z-index: 10000;
+    cursor: default;
+}
+header {
+a {
+    color: white;
+}
+}
+#wrapper {
+    background-color: inherit;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+@media screen and (max-width: 1680px) {
+
+   .content {
+        padding: 5rem 5rem 3rem 5rem;
+    }
+
+}
+
+@media screen and (max-width: 1280px) {
+
+    .content {
+        padding: 4rem 4rem 2rem 4rem ;
+    }
+
+}
+
+@media screen and (max-width: 980px) {
+
+    .content {
+        padding: 3.75rem 3rem 1.75rem 3rem ;
+    }
+
+}
+
+@media screen and (max-width: 736px) {
+
+    .content {
+        padding: 2.5rem 2rem 0.5rem 2rem ;
+    }
+
+}
+
+.selected {
+    background-color: #aaaaaa !important;
+}

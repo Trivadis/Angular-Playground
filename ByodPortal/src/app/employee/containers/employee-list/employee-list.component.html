@@ -24,7 +24,7 @@
         <th>E-Mail</th>
         <th>&nbsp;</th>
     </tr>
-    <tr *ngFor="let employee of employees$ | async | employeeFilter:listFilter">
+    <tr *ngFor="let employee of employees$ | async | employeeFilter:listFilter" appSelect>
         <td>{{ employee.id }}</td>
         <td>{{ employee.firstname }}</td>
         <td>{{ employee.lastname }}</td>

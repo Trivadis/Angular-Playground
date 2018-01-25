@@ -12,6 +12,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
+import { EmployeeService } from '../../services/index';
 
 @Component({
   selector: 'app-employee-form',
@@ -29,7 +30,7 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
   form: FormGroup = this.fb.group({
     firstname: ['', Validators.required],
     lastname: ['', Validators.required],
-    email: ['', [Validators.required, EmployeeValidators.emailValidator], EmployeeValidators.checkEmailUnique],
+    email: ['', [Validators.required, EmployeeValidators.emailValidator], EmployeeValidators.checkEmailUnique(this.service)],
     emailConfirm: ['', [Validators.required, EmployeeValidators.emailValidator]]
   }, {
     validator: EmployeeValidators.checkEmailsMatch,
@@ -37,7 +38,7 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
   });
   isEdit = false;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private service: EmployeeService) {}
 
   ngOnInit() {}
 

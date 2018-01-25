@@ -3,18 +3,26 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppCustomPreloader } from './core/app-custom-preloader';
+import { WelcomeComponent } from './layout/welcome/welcome.component';
+import { StandardLayoutComponent } from './layout/standard-layout/standard-layout.component';
 
 const routes: Routes = [
-  { path: '', component: AppComponent },
-  { path: 'test', component: AppComponent },
   {
-    path: 'employees',
-    loadChildren: './employee/employee.module#EmployeeModule',
-    data: { preload: true }
-  },
-  {
-    path: 'devices',
-    loadChildren: './device/device.module#DeviceModule'
+    path: '',
+    component: StandardLayoutComponent,
+    children: [
+      { path: '', component: WelcomeComponent },
+      {
+        path: 'employees',
+        loadChildren: './employee/employee.module#EmployeeModule',
+        data: { preload: false }
+      },
+      {
+        path: 'devices',
+        loadChildren: './device/device.module#DeviceModule',
+        data: { preload: true }
+      }
+    ]
   }
 ];
 

@@ -1,0 +1,20 @@
+<header>
+    Byod Portal
+    <nav>
+        <a [routerLink]="['/employees']">Employees</a>
+        <a [routerLink]="['/devices']">Devices</a>
+    </nav>
+</header>
+<div id="wrapper">
+    <section>
+        <div class="content">
+            <div>
+                <router-outlet></router-outlet>
+            </div>
+            <div>
+                Footer
+            </div>
+        </div>
+        <div class="image"></div>
+    </section>
+</div>

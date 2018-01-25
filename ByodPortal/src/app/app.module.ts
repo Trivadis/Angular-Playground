@@ -17,6 +17,7 @@ import { reducers, effects, CustomSerializer } from './store';
 // not used in production
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { storeFreeze } from 'ngrx-store-freeze';
+import { StandardLayoutModule } from './layout/layout.module';
 
 export const metaReducers: MetaReducer<any>[] = !environment.production ?
 [storeFreeze]
@@ -27,6 +28,7 @@ export const metaReducers: MetaReducer<any>[] = !environment.production ?
     BrowserModule,
     BrowserAnimationsModule,
     CoreModule,
+    StandardLayoutModule,
     AppRoutingModule,
 
     StoreModule.forRoot(reducers, { metaReducers }),
