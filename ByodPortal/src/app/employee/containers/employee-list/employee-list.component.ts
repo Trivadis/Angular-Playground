@@ -14,11 +14,11 @@ export class EmployeeListComponent implements OnInit {
     employees$: Observable<Employee[]>;
     listFilter: string;
 
-    constructor(private store: Store<fromStore.State>,
+    constructor(private store$: Store<fromStore.State>,
         private route: ActivatedRoute) { }
 
     ngOnInit() {
-        this.employees$ =  this.store.select(fromStore.getEmployees);
+        this.employees$ =  this.store$.select(fromStore.getEmployees);
         this.listFilter = this.route.snapshot.queryParams['filterBy'] || '';
     }
 }

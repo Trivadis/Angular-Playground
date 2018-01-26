@@ -27,16 +27,24 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
   @Output() update = new EventEmitter<Employee>();
   @Output() remove = new EventEmitter<Employee>();
 
-  form: FormGroup = this.fb.group({
-    firstname: ['', Validators.required],
-    lastname: ['', Validators.required],
-    email: ['', [Validators.required, EmployeeValidators.emailValidator], EmployeeValidators.checkEmailUnique(this.service)],
-    emailConfirm: ['', [Validators.required, EmployeeValidators.emailValidator]]
-  }, {
-    validator: EmployeeValidators.checkEmailsMatch,
-    updateOn: 'submit'
-  });
+  form: FormGroup = this.fb.group(
+    {
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
+      email: [
+        '',
+        [Validators.required, EmployeeValidators.emailValidator],
+        EmployeeValidators.checkEmailUnique(this.service)
+      ],
+      emailConfirm: ['', [Validators.required, EmployeeValidators.emailValidator]]
+    },
+    {
+      validator: EmployeeValidators.checkEmailsMatch,
+      updateOn: 'submit'
+    }
+  );
   isEdit = false;
+  title = 'Create';
 
   constructor(private fb: FormBuilder, private service: EmployeeService) {}
 
@@ -45,6 +53,7 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (this.employee && this.employee.id) {
       this.isEdit = true;
+      this.title = 'Edit';
       this.form.patchValue(this.employee);
     }
   }

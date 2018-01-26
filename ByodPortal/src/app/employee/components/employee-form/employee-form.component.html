@@ -1,7 +1,6 @@
 <div>
+    <h1>{{ title }}</h1>
     <form [formGroup]="form">
-        emailNotUnique
-        <pre>{{ form.errors | json }}</pre>
         <label>
             <h4>Firstname</h4>
             <input type="text" formControlName="firstname" class="form-input">
@@ -24,7 +23,6 @@
         <label>
             <h4>Email</h4>
             <input type="text" formControlName="email" class="form-input">
-            <pre>{{ email.errors | json }}</pre>
             <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
                 <div *ngIf="email.errors?.required">
                     E-Mail is required.
