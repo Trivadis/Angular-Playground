@@ -1,13 +1,13 @@
-<div>
+<h2>Employees</h2>
+<div class="row">
     <a class="btn btn-ok" routerLink="./new" [queryParams]="{filterBy: listFilter}">
         New Employee
     </a>
 </div>
-
-<div class="row">
-    <div class="col-md-2">Filter by:</div>
-    <div class="col-md-4">
-        <input type="search" [(ngModel)]="listFilter" />
+<div class="row mb-2">
+    <div class="col-md-2">Search:</div>
+    <div class="col-md-6">
+        <input type="search" [(ngModel)]="listFilter" class="form-control" />
     </div>
 </div>
 <div class="row" *ngIf="listFilter">
@@ -15,24 +15,31 @@
         <span>Filtered by: {{listFilter}} </span>
     </div>
 </div>
-
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>E-Mail</th>
-        <th>&nbsp;</th>
-    </tr>
-    <tr *ngFor="let employee of employees$ | async | employeeFilter:listFilter" appSelect>
-        <td>{{ employee.id }}</td>
-        <td>{{ employee.firstname }}</td>
-        <td>{{ employee.lastname }}</td>
-        <td>{{ employee.email }}</td>
-        <td>
-            <a class="btn btn-ok" [routerLink]="['./',  employee.id]" [queryParams]="{filterBy: listFilter}">
-                Edit
-            </a>
-        </td>
-    </tr>
-</table>
+<div class="row mt-2">
+    <div class="col-md-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>E-Mail</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let employee of employees$ | async | employeeFilter:listFilter" appSelect>
+                    <td>{{ employee.id }}</td>
+                    <td>{{ employee.firstname }}</td>
+                    <td>{{ employee.lastname }}</td>
+                    <td>{{ employee.email }}</td>
+                    <td>
+                        <a class="btn btn-ok" [routerLink]="['./',  employee.id]" [queryParams]="{filterBy: listFilter}">
+                            Edit
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

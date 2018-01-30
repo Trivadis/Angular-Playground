@@ -18,8 +18,8 @@ const routes: Routes = [
         data: { preload: false }
       },
       {
-        path: 'devices',
-        loadChildren: './device/device.module#DeviceModule',
+        path: 'about',
+        loadChildren: './about/about.module#AboutModule',
         data: { preload: true }
       }
     ]

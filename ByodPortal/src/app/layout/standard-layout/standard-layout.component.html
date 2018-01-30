@@ -1,12 +1,25 @@
-<header>
-    Byod Portal
-    <nav>
-        <a [routerLink]="['/employees']">Employees</a>
-        <a [routerLink]="['/devices']">Devices</a>
-    </nav>
+<header class="bg-light">
+    <div id="pageBanner">
+        <h1>Byod Portal</h1>
+    </div>
+    <div class="container">
+        <nav>
+            <a [routerLink]="['/employees']" routerLinkActive="active">Employees</a>
+            <a [routerLink]="['/about']" routerLinkActive="active">About</a>
+        </nav>
+    </div>
 </header>
-<div id="wrapper">
-    <section>
+<main>
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
+</main>
+<footer class="bg-light">
+    <div class="container">
+        <p>&copy; 2018, Trivadis AG</p>
+    </div>
+</footer>
+<!-- <section>
         <div class="content">
             <div>
                 <router-outlet></router-outlet>
@@ -15,8 +28,8 @@
                 &copy; 2018, Trivadis AG
             </div>
         </div>
-        <div class="image">
+         <div class="image">
             <img src="https://m.trivadis.com/hubfs/TVD_Training/Landingpages/Angular/Angular-Training.jpg" />
-        </div>
-    </section>
-</div>
+        </div> -->
+<!-- </section>
+</div> -->
