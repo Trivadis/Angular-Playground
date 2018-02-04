@@ -13,12 +13,12 @@ const routes: Routes = [
    {
     path: 'new',
     component: fromContainer.EmployeeComponent,
-    canActivate: [fromGuards.EmployeeGuard]
+    canActivate: [fromGuards.EmployeeGuard, fromGuards.DeviceGuard]
   },
    {
      path: ':employeeId',
      component: fromContainer.EmployeeComponent,
-     canActivate: [fromGuards.EmployeeGuard]
+     canActivate: [fromGuards.EmployeeGuard, fromGuards.DeviceGuard]
    }
 ];
 

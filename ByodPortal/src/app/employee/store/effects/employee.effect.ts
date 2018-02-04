@@ -13,7 +13,7 @@ export class EmployeeEffects {
   constructor(private actions$: Actions, private employeeService: fromServices.EmployeeService) {}
 
   @Effect()
-  loadEmployees$ = this.actions$.ofType(employeeActions.ActionTypes.LoadEmployees).pipe(
+  loadEmployees$ = this.actions$.ofType(employeeActions.EmployeeActionTypes.LoadEmployees).pipe(
     switchMap(() => {
       return this.employeeService
         .getEmployees()
@@ -25,7 +25,7 @@ export class EmployeeEffects {
   );
 
   @Effect()
-  createEmployee$ = this.actions$.ofType(employeeActions.ActionTypes.CreateEmployee).pipe(
+  createEmployee$ = this.actions$.ofType(employeeActions.EmployeeActionTypes.CreateEmployee).pipe(
     map((action: employeeActions.CreateEmployee) => action.payload),
     switchMap(employee => {
       return this.employeeService
@@ -38,7 +38,7 @@ export class EmployeeEffects {
   );
 
   @Effect()
-  updateEmployee$ = this.actions$.ofType(employeeActions.ActionTypes.UpdateEmployee).pipe(
+  updateEmployee$ = this.actions$.ofType(employeeActions.EmployeeActionTypes.UpdateEmployee).pipe(
     map((action: employeeActions.UpdateEmployee) => action.payload),
     switchMap(employee => {
       return this.employeeService.updateEmployee(employee).pipe(
@@ -52,7 +52,7 @@ export class EmployeeEffects {
   );
 
   @Effect()
-  removeEmployee$ = this.actions$.ofType(employeeActions.ActionTypes.RemoveEmployee).pipe(
+  removeEmployee$ = this.actions$.ofType(employeeActions.EmployeeActionTypes.RemoveEmployee).pipe(
     map((action: employeeActions.RemoveEmployee) => action.payload),
     switchMap(employee => {
       return this.employeeService.removeEmployee(employee).pipe(
@@ -68,9 +68,9 @@ export class EmployeeEffects {
   @Effect()
   handleEmployeeSuccess$ = this.actions$
     .ofType(
-      employeeActions.ActionTypes.CreateEmployeeSuccess,
-      employeeActions.ActionTypes.UpdateEmployeeSuccess,
-      employeeActions.ActionTypes.RemoveEmployeeSuccess
+      employeeActions.EmployeeActionTypes.CreateEmployeeSuccess,
+      employeeActions.EmployeeActionTypes.UpdateEmployeeSuccess,
+      employeeActions.EmployeeActionTypes.RemoveEmployeeSuccess
     )
     .pipe(
       map(employee => {

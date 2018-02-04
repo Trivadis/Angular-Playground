@@ -9,14 +9,14 @@ export function reducer(
 ): fromState.EmployeeState {
 
   switch (action.type) {
-    case fromActions.ActionTypes.LoadEmployees: {
+    case fromActions.EmployeeActionTypes.LoadEmployees: {
       return {
         ...state,
         loading: true,
       };
     }
 
-    case fromActions.ActionTypes.LoadEmployeeSuccess: {
+    case fromActions.EmployeeActionTypes.LoadEmployeeSuccess: {
       const employees = action.payload;
 
       const entities = employees.reduce(
@@ -39,7 +39,7 @@ export function reducer(
       };
     }
 
-    case fromActions.ActionTypes.LoadEmployeeFail: {
+    case fromActions.EmployeeActionTypes.LoadEmployeeFail: {
       return {
         ...state,
         loading: false,
@@ -48,8 +48,8 @@ export function reducer(
     }
 
 
-    case fromActions.ActionTypes.CreateEmployeeSuccess:
-    case fromActions.ActionTypes.UpdateEmployeeSuccess: {
+    case fromActions.EmployeeActionTypes.CreateEmployeeSuccess:
+    case fromActions.EmployeeActionTypes.UpdateEmployeeSuccess: {
       const employee = action.payload;
 
       const entities = {
@@ -64,7 +64,7 @@ export function reducer(
     }
 
 
-    case fromActions.ActionTypes.RemoveEmployeeSuccess: {
+    case fromActions.EmployeeActionTypes.RemoveEmployeeSuccess: {
       const employee = action.payload;
       const { [employee.id]: removed, ...entities } = state.entities;
 
