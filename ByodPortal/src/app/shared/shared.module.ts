@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,4 +17,11 @@ import * as fromDirectives from './directives';
   declarations: [...fromDirectives.directives],
   providers: []
 })
-export class SharedModule {}
+export class SharedModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: SharedModule,
+      providers: []
+    };
+  }
+}
