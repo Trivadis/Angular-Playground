@@ -31,7 +31,7 @@ export const metaReducers: MetaReducer<any>[] = !environment.production ?
     CoreModule,
     StandardLayoutModule,
     AppRoutingModule,
-    SharedModule.forRoot(),
+    SharedModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot(effects),
     StoreRouterConnectingModule,
