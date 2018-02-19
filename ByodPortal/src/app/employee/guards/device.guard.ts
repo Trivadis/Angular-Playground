@@ -10,26 +10,21 @@ import * as fromStore from '../store';
 
 @Injectable()
 export class DeviceGuard implements CanActivate {
-    constructor(private store: Store<fromStore.State>) { }
+  constructor(private store: Store<fromStore.State>) {}
 
-    canActivate(): Observable<boolean> {
-      return of(true);
+  canActivate(): Observable<boolean> {
+    return this.checkStore().pipe(switchMap(() => of(true)), catchError(() => of(false)));
+  }
 
-        // return this.checkStore().pipe(
-        //   switchMap(() => of(true)),
-        //   catchError(() => of(false))
-        // );
-      }
-
-      checkStore(): Observable<boolean> {
-        return this.store.select(fromStore.getDeviceLoaded).pipe(
-          tap(loaded => {
-            if (!loaded) {
-              this.store.dispatch(new fromStore.LoadDevices());
-            }
-          }),
-          filter(loaded => loaded),
-          take(1)
-        );
-      }
+  checkStore(): Observable<boolean> {
+    return this.store.select(fromStore.getDeviceLoaded).pipe(
+      tap(loaded => {
+        if (!loaded) {
+          this.store.dispatch(new fromStore.LoadDevices());
+        }
+      }),
+      filter(loaded => loaded),
+      take(1)
+    );
+  }
 }
