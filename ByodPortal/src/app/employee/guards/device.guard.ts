@@ -13,10 +13,12 @@ export class DeviceGuard implements CanActivate {
     constructor(private store: Store<fromStore.State>) { }
 
     canActivate(): Observable<boolean> {
-        return this.checkStore().pipe(
-          switchMap(() => of(true)),
-          catchError(() => of(false))
-        );
+      return of(true);
+
+        // return this.checkStore().pipe(
+        //   switchMap(() => of(true)),
+        //   catchError(() => of(false))
+        // );
       }
 
       checkStore(): Observable<boolean> {

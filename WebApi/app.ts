@@ -7,7 +7,7 @@ interface Employee {
   lastname: string;
   email: string;
 }
-interface Product {
+interface Device {
   id: number;
   name: string;
   description: string;
@@ -106,31 +106,31 @@ function getNextEmployeeId(): number {
 }
 
 
-let products: Product[] = [
+let devices: Device[] = [
   {
     id: 1,
-    name: 'Sofa',
+    name: 'Surface Pro 4',
     description:
-      'Das Sofa Sun von PLM Design ist ein optimal kombinierbares Sitzmöbel, dass mit seinem schlichten und nordischen Design jeden Raum veredelt.',
-    price: 899.9
+      'Ausgestattet mit einem Intel Core M-Prozessor, stellt diese Modellvariante den Einstieg in die Welt des Surface Pro 4 dar. Dieses Modell eignet sich insbesondere für den preisbewussten Studenten und Anwender, der das Gerät vorwiegend für die Textverarbeitung und das Surfen auf dem Internet nutzen.',
+    price: 1583.1
   },
   {
     id: 2,
-    name: 'Stuhl',
+    name: 'Microsoft Arc Mouse',
     description:
-      'Der kontemporäre Stuhl des Labels Zago setzt moderne Akzente in deinem Zuhause, ganz gleich ob wir es lieber minimalistisch oder doch etwas origineller mögen.',
-    price: 99.0
+      'Der Reisebegleiter für Ihr Surface-Gerät Schlank, leicht und hervorragend für Reisen geeignet – Surface Arc Maus passt sich Ihrer Hand an und kann für einfachen Transport flach zusammengeklappt werden.',
+    price: 75.0
   }
 ];
-let productRouter = express.Router();
-productRouter.route('/products').get((request: express.Request, response: express.Response) => {
+let deviceRouter = express.Router();
+deviceRouter.route('/devices').get((request: express.Request, response: express.Response) => {
   response.setHeader('Content-Type', 'application/json');
-  response.send(JSON.stringify(products));
+  response.send(JSON.stringify(devices));
 });
 
 app.use(allowCrossDomain);
 app.use('/api', employeeRouter);
-app.use('/api', productRouter);
+app.use('/api', deviceRouter);
 
 app.listen(port, () => {
   console.log('Started listening on port ' + port);
