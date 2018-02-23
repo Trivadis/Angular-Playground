@@ -5,6 +5,7 @@ import { throwIfAlreadyLoaded } from './module-import-guard';
 import { AppCustomPreloader } from './app-custom-preloader';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
+import { HttpErrorInterceptor } from './http-error.interceptor';
 
 // https://angular.io/guide/styleguide#core-feature-module
 
@@ -29,6 +30,11 @@ export class CoreModule {
         {
           provide: HTTP_INTERCEPTORS,
           useClass: AuthInterceptor,
+          multi: true
+        },
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: HttpErrorInterceptor,
           multi: true
         }
       ]
