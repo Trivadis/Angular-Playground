@@ -11,13 +11,11 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { Store } from '@ngrx/store';
-import { AppState } from 'app/store/states/app.state';
-import { AddNotification } from 'app/store/actions/user.action';
 import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
-  constructor(private readonly store$: Store<AppState>) {}
+  constructor() {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
