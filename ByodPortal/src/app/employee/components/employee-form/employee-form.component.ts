@@ -29,7 +29,9 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
 
   form: FormGroup = this.fb.group(
     {
-      firstname: ['', Validators.required],
+      firstname: ['', { validators: Validators.required,
+        updateOn: 'blur'
+       }],
       lastname: ['', Validators.required],
       email: [
         '',
@@ -40,7 +42,7 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
     },
     {
       validator: EmployeeValidators.checkEmailsMatch,
-      updateOn: 'submit'
+      updateOn: 'submit' // not working at the moment. Open bug!
     }
   );
   isEdit = false;

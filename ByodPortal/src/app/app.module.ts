@@ -28,7 +28,7 @@ export const metaReducers: MetaReducer<any>[] = !environment.production ?
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    CoreModule,
+    CoreModule.forRoot(),
     StandardLayoutModule,
     AppRoutingModule,
     SharedModule,
