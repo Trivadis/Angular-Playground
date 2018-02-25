@@ -2,9 +2,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { AppCustomPreloader } from './core/app-custom-preloader';
 import { WelcomeComponent } from './layout/welcome/welcome.component';
 import { StandardLayoutComponent } from './layout/standard-layout/standard-layout.component';
+import { AppCustomPreloader } from './core/app-custom-preloader';
 
 const routes: Routes = [
   {
