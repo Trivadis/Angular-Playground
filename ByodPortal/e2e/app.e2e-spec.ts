@@ -1,4 +1,6 @@
 import { AppPage } from './app.po';
+import { by, browser } from 'protractor';
+import * as fs from 'fs';
 
 describe('byod-portal App', () => {
     let page: AppPage;
@@ -26,6 +28,21 @@ describe('byod-portal App', () => {
         page.search('Thomas');
 
         expect(page.getResult().count()).toEqual(3);
+    });
+
+    it('should edit a person correctly', () => {
+
+        page.navigateTo('/employees');
+
+        const linkEditBtn = page.getElement('a.btn-ok');
+        linkEditBtn.click();
+
+        // browser.takeScreenshot().then(png => {
+        //     const stream = fs.createWriteStream(`screenshot-1.png`);
+        //     stream.write(new Buffer(png, 'base64'));
+        //     stream.end();
+        //   });
+
     });
 
 });

@@ -18,10 +18,12 @@ export class AppPage {
     }
 
     search(search: string) {
+        this.getElement('input[type="search"]').clear();
         this.getElement('input[type="search"]').sendKeys(search);
     }
 
     getResult() {
         return element.all(by.css('table.table tbody tr'));
     }
+
 }
