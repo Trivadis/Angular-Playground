@@ -1,4 +1,5 @@
 import { browser, by, element } from 'protractor';
+import * as fs from 'fs';
 
 export class AppPage {
     navigateTo(url: string) {
@@ -26,4 +27,15 @@ export class AppPage {
         return element.all(by.css('table.table tbody tr'));
     }
 
+    takeScreenshot(idx: number) {
+        return browser.takeScreenshot().then(png => {
+            const stream = fs.createWriteStream('screenshot-' + idx + '.png');
+            stream.write(new Buffer(png, 'base64'));
+            stream.end();
+        });
+    }
+
+    getLastname(idx: number) {
+        return element(by.css('table.table tbody tr td:nth-child(3)')).getText();
+    }
 }

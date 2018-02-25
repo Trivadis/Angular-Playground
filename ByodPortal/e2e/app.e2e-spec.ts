@@ -1,6 +1,4 @@
 import { AppPage } from './app.po';
-import { by, browser } from 'protractor';
-import * as fs from 'fs';
 
 describe('byod-portal App', () => {
     let page: AppPage;
@@ -30,19 +28,30 @@ describe('byod-portal App', () => {
         expect(page.getResult().count()).toEqual(3);
     });
 
-    it('should edit a person correctly', () => {
+    fit('should edit a person correctly', () => {
 
         page.navigateTo('/employees');
+        page.takeScreenshot(1);
 
-        const linkEditBtn = page.getElement('a.btn-ok');
-        linkEditBtn.click();
+        page.getElement('table a.btn.btn-ok').click();
+        page.takeScreenshot(2);
 
-        // browser.takeScreenshot().then(png => {
-        //     const stream = fs.createWriteStream(`screenshot-1.png`);
-        //     stream.write(new Buffer(png, 'base64'));
-        //     stream.end();
-        //   });
+        const inputField = page.getElement('[formcontrolname="lastname"]');
+        inputField.clear();
+        page.takeScreenshot(3);
 
+        inputField.sendKeys("Wayne");
+        page.takeScreenshot(4);
+
+        const email = page.getElement('[formcontrolname="email"]').getAttribute('value');
+        page.getElement('[formcontrolname="emailConfirm"]').sendKeys(email);
+        page.takeScreenshot(5);
+
+        page.getElement('button.btn.btn-ok').click();
+        page.takeScreenshot(6);
+
+        expect(page.getLastname(0)).toEqual('Wayne');
+        
     });
 
 });
