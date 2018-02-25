@@ -28,7 +28,7 @@ describe('byod-portal App', () => {
         expect(page.getResult().count()).toEqual(3);
     });
 
-    fit('should edit a person correctly', () => {
+    it('should edit a person correctly', () => {
 
         page.navigateTo('/employees');
         page.takeScreenshot(1);
