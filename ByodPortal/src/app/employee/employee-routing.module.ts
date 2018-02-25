@@ -18,7 +18,8 @@ const routes: Routes = [
    {
      path: ':employeeId',
      component: fromContainer.EmployeeComponent,
-     canActivate: [fromGuards.EmployeeGuard, fromGuards.DeviceGuard]
+     canActivate: [fromGuards.EmployeeGuard, fromGuards.DeviceGuard],
+     canDeactivate: [fromGuards.EmployeeEditGuard]
    }
 ];
 
