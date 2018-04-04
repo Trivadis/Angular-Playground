@@ -9,7 +9,7 @@ export class AppComponent {
 
   constructor(public translate: TranslateService) {
     translate.setDefaultLang("en-US");
-    translate.use("de-CH");
+    translate.use("en-US");
   }
 
 }
