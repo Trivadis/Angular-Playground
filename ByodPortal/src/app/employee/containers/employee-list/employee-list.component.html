@@ -1,18 +1,18 @@
-<h2>Employees</h2>
+<h2 translate>LAYOUT.EMPLOYEES</h2>
 <div class="row">
-    <a class="btn btn-ok" routerLink="./new" [queryParams]="{filterBy: listFilter}">
-        New Employee
+    <a class="btn btn-ok" routerLink="./new" [queryParams]="{filterBy: listFilter}" translate>
+        EMPLOYEE.NEWEMPLOYEE
     </a>
 </div>
 <div class="row mb-2">
-    <div class="col-md-2">Search:</div>
+    <div class="col-md-2">{{ 'CORE.SEARCH' | translate }}:</div>
     <div class="col-md-6">
         <input type="search" [(ngModel)]="listFilter" class="form-control" />
     </div>
 </div>
 <div class="row" *ngIf="listFilter">
     <div class="col-md-6">
-        <span>Filtered by: {{listFilter}} </span>
+        <span translate [translateParams]="{filterValue: listFilter}">CORE.FILTEREDBY</span>
     </div>
 </div>
 <div class="row mt-2">
@@ -21,9 +21,9 @@
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>E-Mail</th>
+                    <th translate>EMPLOYEE.FIRSTNAME</th>
+                    <th translate>EMPLOYEE.LASTNAME</th>
+                    <th translate>EMPLOYEE.EMAIL</th>
                     <th>&nbsp;</th>
                 </tr>
             </thead>
@@ -34,8 +34,8 @@
                     <td>{{ employee.lastname }}</td>
                     <td>{{ employee.email }}</td>
                     <td>
-                        <a class="btn btn-ok" [routerLink]="['./',  employee.id]" [queryParams]="{filterBy: listFilter}">
-                            Edit
+                        <a class="btn btn-ok" [routerLink]="['./',  employee.id]" [queryParams]="{filterBy: listFilter}" translate>
+                            CORE.EDIT
                         </a>
                     </td>
                 </tr>

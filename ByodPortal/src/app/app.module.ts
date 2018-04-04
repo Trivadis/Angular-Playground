@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClient } from '@angular/common/http';
 
 import { environment } from './../environments/environment';
 
@@ -14,11 +15,23 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { reducers, effects, CustomSerializer } from './store';
 
+// localizing imports, definitions & registrations
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import localeDECH from '@angular/common/locales/de-CH';
+
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localeDECH);
+
 // not used in production
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { StandardLayoutModule } from './layout/layout.module';
 import { SharedModule } from './shared/shared.module';
+
+export function TranslateLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 export const metaReducers: MetaReducer<any>[] = !environment.production ?
 [storeFreeze]
@@ -35,6 +48,9 @@ export const metaReducers: MetaReducer<any>[] = !environment.production ?
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot(effects),
     StoreRouterConnectingModule,
+    TranslateModule.forRoot({
+      loader: { provide: TranslateLoader, useFactory: TranslateLoaderFactory, deps: [HttpClient] }
+    }),
     environment.production ? [] : StoreDevtoolsModule.instrument({
       maxAge: 10
     }),

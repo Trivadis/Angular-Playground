@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { TranslateModule } from '@ngx-translate/core';
+
 import * as fromDirectives from './directives';
 
 // https://angular.io/guide/styleguide#shared-feature-module
@@ -13,6 +15,7 @@ import * as fromDirectives from './directives';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    TranslateModule,
     ...fromDirectives.directives],
   declarations: [...fromDirectives.directives],
   providers: []
