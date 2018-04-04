@@ -1,5 +1,9 @@
 <header class="bg-light">
     <div id="pageBanner">
+        <div class="language-switch">
+            <a [class.active]="isActiveLocale('en-US')" (click)="changeLocale('en-US')">EN</a>
+            <a [class.active]="isActiveLocale('de-CH')" (click)="changeLocale('de-CH')">DE</a>
+        </div>
         <h1>Byod Portal</h1>
     </div>
     <div class="container">
