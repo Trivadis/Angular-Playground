@@ -32,7 +32,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   onRemove(event: Employee) {
-    const message = this.translate.instant("CORE.DELETEWARNING") as string;
+    const message = this.translate.instant('CORE.DELETEWARNING') as string;
     const remove = window.confirm(message);
     if (remove) {
       this.store$.dispatch(new fromStore.RemoveEmployee(event));

@@ -17,43 +17,43 @@ import { reducers, effects, CustomSerializer } from './store';
 
 // localizing imports, definitions & registrations
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { LayoutModule } from './layout/layout.module';
+import { SharedModule } from './shared/shared.module';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import localeDECH from '@angular/common/locales/de-CH';
 
+import localeDECH from '@angular/common/locales/de-CH';
 import { registerLocaleData } from '@angular/common';
 registerLocaleData(localeDECH);
 
 // not used in production
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { storeFreeze } from 'ngrx-store-freeze';
-import { StandardLayoutModule } from './layout/layout.module';
-import { SharedModule } from './shared/shared.module';
 
-export function TranslateLoaderFactory(http: HttpClient) {
+export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
-export const metaReducers: MetaReducer<any>[] = !environment.production ?
-[storeFreeze]
-: [];
+export const metaReducers: MetaReducer<any>[] = !environment.production ? [storeFreeze] : [];
 
 @NgModule({
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     CoreModule.forRoot(),
-    StandardLayoutModule,
+    LayoutModule,
     AppRoutingModule,
     SharedModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot(effects),
     StoreRouterConnectingModule,
     TranslateModule.forRoot({
-      loader: { provide: TranslateLoader, useFactory: TranslateLoaderFactory, deps: [HttpClient] }
+      loader: { provide: TranslateLoader, useFactory: HttpLoaderFactory, deps: [HttpClient] }
     }),
-    environment.production ? [] : StoreDevtoolsModule.instrument({
-      maxAge: 10
-    }),
+    environment.production
+      ? []
+      : StoreDevtoolsModule.instrument({
+          maxAge: 10
+        })
   ],
   declarations: [AppComponent],
   providers: [{ provide: RouterStateSerializer, useClass: CustomSerializer }],

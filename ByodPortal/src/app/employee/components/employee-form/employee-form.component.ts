@@ -30,9 +30,13 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
 
   form: FormGroup = this.fb.group(
     {
-      firstname: ['', { validators: Validators.required,
-        updateOn: 'blur'
-       }],
+      firstname: [
+        '',
+        {
+          validators: Validators.required,
+          updateOn: 'blur'
+        }
+      ],
       lastname: ['', Validators.required],
       email: [
         '',
@@ -46,21 +50,22 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
       updateOn: 'submit' // not working at the moment. Open bug!
     }
   );
-  
-  isEdit = false;
-  title: string; // => with translation set in constructor
 
-  constructor(private fb: FormBuilder, private service: EmployeeService, private translate: TranslateService) {
-    this.translate.get("CORE.CREATE").subscribe((text: string) => this.title = text);
-  }
+  isEdit = false;
+  title = 'CORE.CREATE';
+
+  constructor(
+    private fb: FormBuilder,
+    private service: EmployeeService,
+    private translate: TranslateService
+  ) {}
 
   ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (this.employee && this.employee.id) {
       this.isEdit = true;
-      console.log("onChanges");
-      this.translate.get("CORE.EDIT").subscribe((text: string) => this.title = text);
+      this.title = 'CORE.EDIT';
       this.form.patchValue(this.employee);
     }
   }

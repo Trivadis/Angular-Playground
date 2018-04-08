@@ -12,11 +12,11 @@ import { RouterModule } from '@angular/router';
   declarations: [StandardLayoutComponent, WelcomeComponent],
   providers: []
 })
-export class StandardLayoutModule {
+export class LayoutModule {
   constructor(
     @Optional()
     @SkipSelf()
-    parentModule: StandardLayoutModule
+    parentModule: LayoutModule
   ) {
     throwIfAlreadyLoaded(parentModule, 'StandardLayoutModule');
   }

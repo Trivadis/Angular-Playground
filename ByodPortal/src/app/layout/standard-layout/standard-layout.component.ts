@@ -5,7 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
     templateUrl: 'standard-layout.component.html'
 })
 export class StandardLayoutComponent implements OnInit {
-    
+
     constructor(private translate: TranslateService) { }
 
     ngOnInit() { }
