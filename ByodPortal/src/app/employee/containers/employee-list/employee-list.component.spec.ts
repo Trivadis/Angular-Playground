@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { EmployeeFilterPipe } from '../../pipes/employee-filter.pipe';
 import { StoreModule } from '@ngrx/store';
 import { AppRoutingModule } from '../../../app-routing.module';
-import { StandardLayoutModule } from '../../../layout/layout.module';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { APP_BASE_HREF } from '@angular/common';
 import { reducers } from './../../store';
@@ -24,7 +23,6 @@ describe('EmployeeListComponent', () => {
       TestBed.configureTestingModule({
         imports: [
           RouterTestingModule,
-          StandardLayoutModule,
           FormsModule,
           StoreModule.forRoot(reducers),
           StoreModule.forFeature('employees', reducersFeature),
