@@ -40,7 +40,7 @@ describe('byod-portal App', () => {
         inputField.clear();
         page.takeScreenshot(3);
 
-        inputField.sendKeys("Wayne");
+        inputField.sendKeys('Wayne');
         page.takeScreenshot(4);
 
         const email = page.getElement('[formcontrolname="email"]').getAttribute('value');
@@ -51,7 +51,7 @@ describe('byod-portal App', () => {
         page.takeScreenshot(6);
 
         expect(page.getLastname(0)).toEqual('Wayne');
-        
+
     });
 
 });

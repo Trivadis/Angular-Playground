@@ -12,7 +12,7 @@ export class EmployeeEditGuard implements CanDeactivate<EmployeeComponent> {
 
   canDeactivate(component: EmployeeComponent): boolean {
     if (!component.isIntended) {
-      const message = this.translate.instant("CORE.NAVIGATEWARNING") as string;
+      const message = this.translate.instant('CORE.NAVIGATEWARNING') as string;
       return confirm(message);
     } else {
       return true;
