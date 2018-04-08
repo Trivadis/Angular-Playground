@@ -13,6 +13,7 @@ import {
 import { FormBuilder, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { EmployeeService } from '../../services/index';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-employee-form',
@@ -45,17 +46,21 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
       updateOn: 'submit' // not working at the moment. Open bug!
     }
   );
+  
   isEdit = false;
-  title = 'Create';
+  title: string; // => with translation set in constructor
 
-  constructor(private fb: FormBuilder, private service: EmployeeService) {}
+  constructor(private fb: FormBuilder, private service: EmployeeService, private translate: TranslateService) {
+    this.translate.get("CORE.CREATE").subscribe((text: string) => this.title = text);
+  }
 
   ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (this.employee && this.employee.id) {
       this.isEdit = true;
-      this.title = 'Edit';
+      console.log("onChanges");
+      this.translate.get("CORE.EDIT").subscribe((text: string) => this.title = text);
       this.form.patchValue(this.employee);
     }
   }

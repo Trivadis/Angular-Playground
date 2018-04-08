@@ -5,6 +5,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromStore from '../../store';
 import { Observable } from 'rxjs/Observable';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   templateUrl: 'employee.component.html',
@@ -14,7 +15,7 @@ export class EmployeeComponent implements OnInit {
   employee$: Observable<Employee>;
   isIntended = false;
 
-  constructor(private store$: Store<fromStore.State>) { }
+  constructor(private store$: Store<fromStore.State>, private translate: TranslateService) { }
 
   ngOnInit() {
     this.employee$ = this.store$.select(fromStore.getSelectedEmployee);
@@ -31,7 +32,8 @@ export class EmployeeComponent implements OnInit {
   }
 
   onRemove(event: Employee) {
-    const remove = window.confirm('Are you sure?');
+    const message = this.translate.instant("CORE.DELETEWARNING") as string;
+    const remove = window.confirm(message);
     if (remove) {
       this.store$.dispatch(new fromStore.RemoveEmployee(event));
     }

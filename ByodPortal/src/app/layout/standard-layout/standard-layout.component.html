@@ -1,11 +1,15 @@
 <header class="bg-light">
     <div id="pageBanner">
+        <div class="language-switch">
+            <a [class.active]="isActiveLocale('en-US')" (click)="changeLocale('en-US')">EN</a>
+            <a [class.active]="isActiveLocale('de-CH')" (click)="changeLocale('de-CH')">DE</a>
+        </div>
         <h1>Byod Portal</h1>
     </div>
     <div class="container">
         <nav>
-            <a [routerLink]="['/employees']" routerLinkActive="active">Employees</a>
-            <a [routerLink]="['/about']" routerLinkActive="active">About</a>
+            <a [routerLink]="['/employees']" routerLinkActive="active" translate>LAYOUT.EMPLOYEES</a>
+            <a [routerLink]="['/about']" routerLinkActive="active" translate>LAYOUT.ABOUT</a>
         </nav>
     </div>
 </header>

@@ -24,6 +24,27 @@ a:focus {
   margin-bottom: 0;
   text-shadow: 0 0 40px rgba(0, 0, 0, 0.75);
 }
+#pageBanner > .language-switch {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.75);
+  padding: 4px 5px;
+  
+}
+#pageBanner > .language-switch > a {
+  cursor: pointer;
+  font-weight: bold;
+  color: gray;
+  padding: 0 5px;
+}
+#pageBanner > .language-switch > a.active {
+  color: blue;
+}
+
+#pageBanner > .language-switch > a:hover {
+  color: blue;
+}
 header {
   nav {
     margin: 5px 0;

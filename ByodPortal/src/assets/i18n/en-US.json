@@ -1,0 +1,23 @@
+{
+    "CORE": {
+        "SEARCH": "Search",
+        "EDIT": "Edit",
+        "CREATE": "Create",
+        "SAVE": "Save",
+        "DELETE": "Delete",
+        "FILTEREDBY": "Filtered by: {{filterValue}}",
+        "NAVIGATEWARNING": "Navigate away and lose all changes?",
+        "DELETEWARNING": "Are you sure?"
+    },
+	"LAYOUT": {
+        "EMPLOYEES": "Employees",
+        "ABOUT": "About"
+	},
+    "EMPLOYEE": {
+        "FIRSTNAME": "Firstname",
+        "LASTNAME": "Lastname",
+        "EMAIL": "Email",
+        "CONFIRMEMAIL": "Confirm Email",
+        "NEWEMPLOYEE": "New Employee"
+    }
+}

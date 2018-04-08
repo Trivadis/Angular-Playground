@@ -1,7 +1,7 @@
 <h2>{{ title }}</h2>
 <form [formGroup]="form">
     <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Firstname</label>
+        <label class="col-sm-2 col-form-label" translate>EMPLOYEE.FIRSTNAME</label>
         <div class="col-sm-10">
             <input type="text" formControlName="firstname" class="form-control">
         </div>
@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Lastname</label>
+        <label class="col-sm-2 col-form-label" translate>EMPLOYEE.LASTNAME</label>
         <div class="col-sm-10">
             <input type="text" formControlName="lastname" class="form-control">
         </div>
@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Email</label>
+        <label class="col-sm-2 col-form-label" translate>EMPLOYEE.EMAIL</label>
         <div class="col-sm-10">
             <input type="text" formControlName="email" class="form-control">
         </div>
@@ -40,7 +40,7 @@
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Confirm Email</label>
+        <label class="col-sm-2 col-form-label" translate>EMPLOYEE.CONFIRMEMAIL</label>
         <div class="col-sm-10">
             <input type="text" formControlName="emailConfirm" class="form-control">
         </div>
@@ -60,14 +60,14 @@
     </div>
 
     <div class="form-actions">
-        <button type="button" class="btn btn-ok" *ngIf="!isEdit" (click)="createEmployee()">
-            Create
+        <button type="button" class="btn btn-ok" *ngIf="!isEdit" (click)="createEmployee()" translate>
+            CORE.CREATE
         </button>
-        <button type="button" class="btn btn-ok" *ngIf="isEdit" (click)="updateEmployee()">
-            Save
+        <button type="button" class="btn btn-ok" *ngIf="isEdit" (click)="updateEmployee()" translate>
+            CORE.SAVE
         </button>
-        <button type="button" class="btn btn-warning" *ngIf="isEdit" (click)="removeEmployee()">
-            Delete
+        <button type="button" class="btn btn-warning" *ngIf="isEdit" (click)="removeEmployee()" translate>
+            CORE.DELETE
         </button>
     </div>
 </form>

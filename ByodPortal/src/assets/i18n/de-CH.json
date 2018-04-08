@@ -1,0 +1,23 @@
+{
+    "CORE": {
+        "SEARCH": "Suchen",
+        "EDIT": "Bearbeiten",
+        "CREATE": "Erstellen",
+        "SAVE": "Speichern",
+        "DELETE": "Löschen",
+        "FILTEREDBY": "Gefiltert als: {{filterValue}}",
+        "NAVIGATEWARNING": "Seite verlassen und alle Änderungen verwerfen?",
+        "DELETEWARNING": "Sind Sie sicher?"
+    },
+	"LAYOUT": {
+        "EMPLOYEES": "Mitarbeiter",
+        "ABOUT": "Über"
+	},
+    "EMPLOYEE": {
+        "FIRSTNAME": "Vorname",
+        "LASTNAME": "Nachname",
+        "EMAIL": "Email",
+        "CONFIRMEMAIL": "Email bestätigen",
+        "NEWEMPLOYEE": "Neuer Mitarbeiter"
+    }
+}
